@@ -1,0 +1,42 @@
+[
+  {
+    "id": "en-lamp-material",
+    "language": "en",
+    "question": "What is this made of, and why does the rim look broken?",
+    "tapPoint": { "x": 0.5, "y": 0.4 },
+    "expectLanguage": "en",
+    "expectContains": "terracotta"
+  },
+  {
+    "id": "hi-lamp-use",
+    "language": "hi",
+    "question": "yeh kis kaam aata tha?",
+    "tapPoint": { "x": 0.42, "y": 0.55 },
+    "expectLanguage": "hi",
+    "expectContains": "दीया"
+  },
+  {
+    "id": "ta-lamp-origin",
+    "language": "ta",
+    "question": "idhu edhanal aanadhu?",
+    "tapPoint": { "x": 0.6, "y": 0.35 },
+    "expectLanguage": "ta",
+    "expectContains": "சுடுமண்"
+  },
+  {
+    "id": "bn-lamp-age",
+    "language": "bn",
+    "question": "eti koto purono?",
+    "tapPoint": { "x": 0.55, "y": 0.5 },
+    "expectLanguage": "bn",
+    "expectContains": "প্রদীপ"
+  },
+  {
+    "id": "en-followup-maker",
+    "language": "en",
+    "question": "Who made this, and where is it from?",
+    "tapPoint": { "x": 0.48, "y": 0.62 },
+    "expectLanguage": "en",
+    "expectContains": "4th century"
+  }
+]
