@@ -2,27 +2,23 @@ import React from 'react';
 
 function ResultCard({ data }) {
   if (!data) return null;
+  const facts = [];
+  if (data.metadata?.period) facts.push({ label: data.metadata.period, tone: 'gold' });
+  if (data.metadata?.material) facts.push({ label: data.metadata.material, tone: 'ivory' });
+  if (data.metadata?.origin) facts.push({ label: data.metadata.origin, tone: '' });
+  if (data.metadata?.type) facts.push({ label: data.metadata.type, tone: '' });
+
   return (
     <div>
-      <div className="transcription">
-        You asked ({data.language || 'en'}): “{data.transcription}”
-      </div>
-      <p className="result-answer">{data.answer}</p>
-      {data.metadata && (
-        <dl className="facts">
-          {data.metadata.period && (
-            <div className="fact"><dt>Period</dt><dd>{data.metadata.period}</dd></div>
-          )}
-          {data.metadata.material && (
-            <div className="fact"><dt>Material</dt><dd>{data.metadata.material}</dd></div>
-          )}
-          {data.metadata.type && (
-            <div className="fact"><dt>Type</dt><dd>{data.metadata.type}</dd></div>
-          )}
-          {data.metadata.origin && (
-            <div className="fact"><dt>Origin</dt><dd>{data.metadata.origin}</dd></div>
-          )}
-        </dl>
+      <p className="artifact-kicker">You asked ({data.language || 'en'}) — “{data.transcription}”</p>
+      <h2 className="artifact-title">{data.metadata?.type || 'The Artifact'}</h2>
+      <p className="artifact-body">{data.answer}</p>
+      {facts.length > 0 && (
+        <div className="chip-row">
+          {facts.map((f, i) => (
+            <span key={i} className={`fact-chip ${f.tone}`}>{f.label}</span>
+          ))}
+        </div>
       )}
     </div>
   );
