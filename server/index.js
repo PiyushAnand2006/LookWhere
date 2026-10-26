@@ -34,6 +34,7 @@ app.post('/api/identify', upload.fields([{ name: 'image' }, { name: 'audio' }]),
     } catch (e) { /* keep default */ }
     const language = req.body.language || 'auto';
     const question = (req.body.question || '').slice(0, 2000);
+    const depth = req.body.depth === 'deep' ? 'deep' : 'quick';
     const frame = {
       width: Number(req.body.frameWidth) || 0,
       height: Number(req.body.frameHeight) || 0
@@ -46,7 +47,7 @@ app.post('/api/identify', upload.fields([{ name: 'image' }, { name: 'audio' }]),
 
     console.log('Processing request:', { tapPoint, language, hasImage: !!imageBuffer, hasAudio: !!audioBuffer });
 
-    const result = await processIdentification(imageBuffer, audioBuffer, tapPoint, { language, question, frame, history });
+    const result = await processIdentification(imageBuffer, audioBuffer, tapPoint, { language, question, frame, history, depth });
 
     res.json(result);
   } catch (error) {

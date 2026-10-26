@@ -202,6 +202,9 @@ async function callMuseSparkLive(imageBuffer, maskData, transcription, opts) {
   const lang = transcription.language && transcription.language !== 'auto'
     ? `Reply in ${languageName(transcription.language)}.`
     : 'Reply in the same language as the question.';
+  const depthAsk = opts.depth === 'deep'
+    ? 'Give a detailed answer (4-6 sentences covering what it is, its history, and how it was made).'
+    : 'Answer in 2-3 sentences.';
   const box = maskData.boundingBox;
   const content = [
     {
@@ -212,7 +215,7 @@ async function callMuseSparkLive(imageBuffer, maskData, transcription, opts) {
         `width=${box.width.toFixed(3)}, height=${box.height.toFixed(3)}. ` +
         `Describe ONLY that object, never the background.\n` +
         (historyText ? `Conversation so far:\n${historyText}\n` : '') +
-        `${lang}\n\nRespond as JSON: ` +
+        `${lang} ${depthAsk}\n\nRespond as JSON: ` +
         `{"answer": "...", "period": "..."|null, "material": "..."|null, ` +
         `"type": "..."|null, "origin": "..."|null}`
     }
