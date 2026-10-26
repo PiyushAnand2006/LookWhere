@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Builds
+client/dist/
+
+# Environment & secrets — NEVER commit real keys
+.env
+server/.env
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
